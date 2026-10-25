@@ -19813,8 +19813,8 @@ function normalizeLanguage(value) {
   return match;
 }
 var languageNames = [
-  ["zh-Hant", ["Traditional Chinese", "\u7E41\u4F53\u4E2D\u6587", "\u7E41\u9AD4\u4E2D\u6587"]],
-  ["zh", ["Simplified Chinese", "Chinese", "\u7B80\u4F53\u4E2D\u6587", "\u4E2D\u6587"]],
+  ["zh-Hant", ["Traditional Chinese", "Traditional Mandarin Chinese", "\u7E41\u4F53\u4E2D\u6587", "\u7E41\u9AD4\u4E2D\u6587"]],
+  ["zh", ["Simplified Chinese", "Simplified Mandarin Chinese", "Mandarin Chinese", "Chinese", "\u7B80\u4F53\u4E2D\u6587", "\u4E2D\u6587"]],
   ["en", ["English", "\u82F1\u8BED", "\u82F1\u6587"]],
   ["ja", ["Japanese", "\u65E5\u8BED", "\u65E5\u6587", "\u65E5\u672C\u8A9E"]],
   ["ko", ["Korean", "\u97E9\u8BED", "\u97E9\u6587", "\uD55C\uAD6D\uC5B4"]],
@@ -20447,8 +20447,7 @@ function determineLanguage(body, header, contexts, user, defaultLanguage2) {
     if (unique.length > 1) throw invalid("Conflicting target translation languages.", "invalid_request", "target_lang");
     if (unique.length === 1) return unique[0];
   }
-  const directive = /(?:\btranslate\b[^\n:：]{0,160}\b(?:to|into)\s+|\b(?:target|output)\s+language\s*[:：]|翻译(?:成|为)|译为|目标语言\s*[:：])/i;
-  if (defaultLanguage2 && ![...contexts, instructionPrefix(user)].some((text) => directive.test(text)))
+  if (defaultLanguage2)
     return defaultLanguage2;
   throw invalid("Unable to determine target translation language.", "target_language_required", "target_lang");
 }
