@@ -32,7 +32,7 @@ Cookie 属于敏感登录凭证，请妥善保管，不要公开、提交到仓�
 
 | 入口 | 用途 |
 | --- | --- |
-| [Magpie 直连插件](https://github.com/mu-zi-lee/magpie-doubao-translate) | 当前插件的发布仓库，可由本机或远端 Magpie 直接安装 |
+| [Magpie 直连插件](https://github.com/Kerwin0224/magpie-doubao-translate) | 当前插件的发布仓库（上游为 [mu-zi-lee/magpie-doubao-translate](https://github.com/mu-zi-lee/magpie-doubao-translate)），可由本机或远端 Magpie 直接安装 |
 | [API 服务源码与部署文档](https://github.com/mu-zi-lee/doubao-translate2api) | 在 NAS 或服务器部署，向多个翻译客户端提供兼容 API |
 | [Docker Hub 镜像](https://hub.docker.com/r/muzileee/doubao-translate2api) | 拉取 `muzileee/doubao-translate2api` 部署 API 服务 |
 
@@ -43,24 +43,26 @@ Cookie 属于敏感登录凭证，请妥善保管，不要公开、提交到仓�
 在 Magpie「插件 → 发现」底部的安装框填写：
 
 ```text
-github:mu-zi-lee/magpie-doubao-translate
+github:Kerwin0224/magpie-doubao-translate
 ```
 
 点击安装，再进入「已安装」或「供应商」，选择 **Doubao Translation** 的 **Import Doubao Cookie** 登录。
 也可以在运行 Magpie 的机器上使用 CLI：
 
 ```sh
-magpie plugin add github:mu-zi-lee/magpie-doubao-translate
+magpie plugin add github:Kerwin0224/magpie-doubao-translate
 magpie plugin login doubao-translate
 ```
 
 GitHub 发布仓库包含已构建的插件和运行时依赖，无须 Node.js 开发环境、Docker 或额外构建步骤。
-固定版本时填写 `github:mu-zi-lee/magpie-doubao-translate#v0.1.2`。
+固定版本时填写 `github:Kerwin0224/magpie-doubao-translate#v0.1.3`。
 更新时在 Magpie 中更新插件，或运行 `magpie plugin update`。
 
 v0.1.1 随插件打包头像图标，安装或更新后，支持自定义插件图标的 Magpie 会在供应商列表显示。图标通过 `auth.icon` 内嵌提供，本机和远端安装均无须另行下载图片；若更新后仍显示默认图标，可关闭再开启插件或重启 Magpie。
 
 v0.1.2 更新为新的头像图标，并提供无损压缩的 PNG，保留原图尺寸和像素内容。
+
+v0.1.3（本仓库）识别 "Simplified Mandarin Chinese" / "Traditional Mandarin Chinese" / "Mandarin Chinese" 等语言名，并在无法识别目标语言时回落到插件默认目标语言，不再返回 400 "Unable to determine target translation language."。
 
 ## 从本地主项目构建
 

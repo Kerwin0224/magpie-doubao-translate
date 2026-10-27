@@ -32,7 +32,7 @@ The project's disclaimer and MIT License do not replace platform authorization o
 
 | Link | Purpose |
 | --- | --- |
-| [Magpie direct plugin](https://github.com/mu-zi-lee/magpie-doubao-translate) | This plugin's distribution repository; install directly from a local or remote Magpie instance |
+| [Magpie direct plugin](https://github.com/Kerwin0224/magpie-doubao-translate) | This plugin's distribution repository (upstream: [mu-zi-lee/magpie-doubao-translate](https://github.com/mu-zi-lee/magpie-doubao-translate)); install directly from a local or remote Magpie instance |
 | [API service source and deployment guide](https://github.com/mu-zi-lee/doubao-translate2api) | Deploy on a NAS or server to provide a compatible API for multiple translation clients |
 | [Docker Hub image](https://hub.docker.com/r/muzileee/doubao-translate2api) | Pull `muzileee/doubao-translate2api` to deploy the API service |
 
@@ -43,24 +43,26 @@ The service and plugin share the same translation core. Install this plugin when
 Enter the following in the installation field at the bottom of Magpie's Plugins > Discover page:
 
 ```text
-github:mu-zi-lee/magpie-doubao-translate
+github:Kerwin0224/magpie-doubao-translate
 ```
 
 Click Install, then open Installed or Providers and select **Import Doubao Cookie** under **Doubao Translation** to sign in.
 You can also use the CLI on the machine running Magpie:
 
 ```sh
-magpie plugin add github:mu-zi-lee/magpie-doubao-translate
+magpie plugin add github:Kerwin0224/magpie-doubao-translate
 magpie plugin login doubao-translate
 ```
 
 The GitHub distribution repository includes the built plugin and its runtime dependencies. No Node.js development environment, Docker, or additional build steps are required.
-To pin a version, use `github:mu-zi-lee/magpie-doubao-translate#v0.1.2`.
+To pin a version, use `github:Kerwin0224/magpie-doubao-translate#v0.1.3`.
 Update the plugin in Magpie or run `magpie plugin update`.
 
 v0.1.1 bundles a custom avatar icon. Magpie versions that support custom plugin icons display it in the provider list after installation or update. The plugin supplies the image inline through `auth.icon`, so local and remote installations need no separate image download. If the default icon remains after updating, disable and re-enable the plugin or restart Magpie.
 
 v0.1.2 refreshes the avatar with a losslessly compressed PNG, preserving the original dimensions and image data.
+
+v0.1.3 (this repository) recognizes "Simplified Mandarin Chinese", "Traditional Mandarin Chinese", and "Mandarin Chinese" as language names, and falls back to the plugin's default target language when the target language cannot be determined instead of returning 400 "Unable to determine target translation language.".
 
 ## Build from the Local Main Project
 
